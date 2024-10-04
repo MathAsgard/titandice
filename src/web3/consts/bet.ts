@@ -1,0 +1,1 @@
+export const payoutRate = 0.92;
