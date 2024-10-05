@@ -22,4 +22,11 @@ export default defineConfig({
       ],
     },
   },
+  build: {
+    target: "esnext",
+    assetsDir: "assets",
+    modulePreload: {
+      polyfill: false,
+    },
+  },
 });

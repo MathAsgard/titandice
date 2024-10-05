@@ -36,6 +36,7 @@ const HighRollersTable: React.FC<AllBetsTableProps> = ({ numberOfData }) => {
                 boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset",
               }}
             >
+              <td className="hidden">{dt}</td>
               <td className="text-[white] text-[14px] tracking-[1.4px] font-semibold  py-[16px] xl:pl-[38px] pl-[17px] border-[#012C11] border-r-0 border rounded-l-[8px] bg-[#072015]">
                 DICE
               </td>
