@@ -5,6 +5,8 @@ import { formatNumber } from "../../utils/formatNumber";
 import { payoutRate } from "../../web3/consts/bet";
 import TitanGamesABI from "../../web3/abis/TitanGM.json";
 import { TitanGamesContract } from "../../web3/consts/contracts";
+import { decimals } from "../../web3/consts/token";
+import { parseEther } from "viem";
 
 export default function SingleBets() {
   const account = useAccount();
@@ -46,7 +48,7 @@ export default function SingleBets() {
         abi: TitanGamesABI,
         address: TitanGamesContract,
         functionName: "multiBet",
-        args: [1, singleBetAmount],
+        args: [1, parseEther(singleBetAmount.toString())],
       });
 
       await publicClient?.waitForTransactionReceipt({ hash });
@@ -69,7 +71,9 @@ export default function SingleBets() {
           BALANCE
         </h4>
         <h4 className="text-white/40 text-[14px] tracking-[1.4px] font-semibold">
-          {loading || !credBalance ? "0" : formatNumber(Number(credBalance))}{" "}
+          {loading || !credBalance
+            ? "0"
+            : formatNumber(Number(credBalance) / decimals)}{" "}
           CREDITS
         </h4>
       </div>

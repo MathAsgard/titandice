@@ -1,5 +1,5 @@
 import { http, createConfig } from "wagmi";
-import { mainnet, sepolia, bscTestnet, Chain } from "wagmi/chains";
+import { mainnet, sepolia, bscTestnet, Chain, pulsechain } from "wagmi/chains";
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   coinbaseWallet,
@@ -9,7 +9,12 @@ import {
 } from "@rainbow-me/rainbowkit/wallets";
 import { Transport } from "viem";
 
-export const supportedChains = [mainnet, sepolia, bscTestnet] as const;
+export const supportedChains = [
+  mainnet,
+  sepolia,
+  bscTestnet,
+  pulsechain,
+] as const;
 export type SupportedChainId = (typeof supportedChains)[number]["id"];
 export const supportedChainIds: SupportedChainId[] = supportedChains.map(
   (chain) => chain.id

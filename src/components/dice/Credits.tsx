@@ -70,7 +70,7 @@ export default function Credits() {
           abi: TitanGamesABI,
           address: TitanGamesContract,
           functionName: "deposit",
-          args: [titanxAmount],
+          args: [parseEther(titanxAmount.toString())],
         });
 
         await publicClient?.waitForTransactionReceipt({ hash });
@@ -101,7 +101,9 @@ export default function Credits() {
             BALANCE
           </h4>
           <h4 className="text-white/40 text-[14px] tracking-[1.4px] font-semibold">
-            {loading || !credBalance ? "0" : formatNumber(Number(credBalance))}{" "}
+            {loading || !credBalance
+              ? "0"
+              : formatNumber(Number(credBalance) / decimals)}{" "}
             CREDITS
           </h4>
         </div>
